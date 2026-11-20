@@ -1,4 +1,4 @@
 # 2042GP close in 1208
-It just a group project
+你平常该怎么写代码怎么写代码，写代码前把code文件拿出来，写完后把code塞回去
 
 
