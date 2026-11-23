@@ -1,1 +1,3 @@
-
+void{
+//function 2
+}
