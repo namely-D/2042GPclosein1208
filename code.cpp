@@ -1,4 +1,4 @@
-w//头文件区
+//头文件区
 #include <iostream>
 #include <iomanip>
 #include <cmath>
