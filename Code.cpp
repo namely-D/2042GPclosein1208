@@ -52,7 +52,7 @@ int main()
       //R5的
       break;
 
-      case 6:
+      case 6: R6(option);
       //R6的
       break;
       
