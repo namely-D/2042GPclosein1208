@@ -44,6 +44,8 @@ private:
 //main主函数区
 int main()
 {
+    Student sampleStudent;
+    
     int option;
     do//菜单
     {
