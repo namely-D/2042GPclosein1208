@@ -5,6 +5,7 @@
 #include <string>
 #include <cstdlib>
 #include <cstring>
+#include <vector>
 using namespace std;
 //R1-R3函数区
 
