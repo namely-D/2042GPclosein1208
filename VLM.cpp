@@ -18,7 +18,12 @@ public:
         Name = "";
     }
 
-    bool cheackACnum(int inputACnum)//校验id
+void setID()//这一行是我方便测试才写进去的，但是你别删，你要入id你再多建一个单独函数
+    {
+        ID = 9178;
+    }
+
+bool cheackACnum(int inputACnum)//校验id
     {
         return ID == inputACnum;
     }
