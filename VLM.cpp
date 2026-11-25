@@ -7,6 +7,31 @@
 #include <cstring>
 #include <vector>
 using namespace std;
+
+//类
+class Student
+{
+public:
+    Student()///自构建
+    {
+        ID = 0;
+        Name = "";
+    }
+
+    bool cheackACnum(int inputACnum)//校验id
+    {
+        return ID == inputACnum;
+    }
+
+private:
+    int ID;
+    string Name;
+};
+
+
+
+
+
 //R1-R3函数区
 
 
@@ -19,9 +44,9 @@ using namespace std;
 //main主函数区
 int main()
 {
-  int option;
-  do
-  {
+    int option;
+    do//菜单
+    {
     cout << "\n***** Main Menu *****\n";
     cout << "[1] Load Starting Data\n";
     cout << "[2] Show Reader Accounts\n";
@@ -31,35 +56,42 @@ int main()
     cout << "[6] Credits and Exit\n";
     cout << "Option (1-6): ";
     cin >> option;
+
     switch (option)
     {
-      case 1:
+        case 1:
       //R1的
-      break;
+        break;
 
-      case 2:
+
+        case 2:
       //R2的
-      break;
+        break;
 
-      case 3:
+
+        case 3:
       //R3的
-      break;
+        break;
 
-      case 4:
-      //R4的
-      break;
 
-      case 5:
+        case 4:
+        R4mainmenu();//启动R4菜单
+        break;
+
+
+        case 5:
       //R5的
-      break;
+        break;
 
-      case 6:
+
+        case 6:
       //R6的
-      break;
+        break;
       
-      default:
+
+        default:
         cout << "Invalid option.\n";
     }
-  }while (option != 6);
-  return 0;
+    }while (option != 6);
+    return 0;
 }
