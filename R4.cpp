@@ -16,9 +16,20 @@ public:
         Name = "";
     }
 
+    int setID()//这一行是我方便测试才写进去的，但是你别删，你要入id你再多建一个单独函数
+    {
+        ID = 9178;
+        return ID;
+    }
+
     bool checkACnum(int inputACnum)//校验id
     {
-        return ID == inputACnum;
+        if(ID == inputACnum)
+        {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 private:
@@ -28,9 +39,53 @@ private:
 
 
 //默认加载过读者资料
-void R4mainmenu()
+void R4mainmenu(int ID)
 {
-    
+    int R4option;
+    do//菜单
+    {
+    cout << "Action for Reader ID: " << ID << endl;
+    cout << "***** Reader Account Operations Menu ***********************\n";
+    cout << "[1] Edit Reader Information\n";
+    cout << "[2] Update Reading Points Balance based on Borrowing Records\n";
+    cout << "[3] Create Borrowing Records\n";
+    cout << "[4] Redeem Reading Points for a Gift & Transfer\n";
+    cout << "[5] Replace Library Card\n";
+    cout << "[6] Return to Main Menu\n";
+    cout << "***********************************************************\n";
+    cout << "Option (1-6): ";
+    cin >> R4option;
+    switch (R4option)
+    {
+        case 1:
+        break;
+
+
+        case 2:
+        break;
+
+
+        case 3:
+        break;
+
+
+        case 4:
+        break;
+
+
+        case 5:
+        break;
+
+
+        case 6:
+        break;
+      
+
+        default:
+        cout << "Invalid option.\n";
+    }
+    }while (R4option != 6);
+    return;
 }
 
 
@@ -46,17 +101,20 @@ void R4mainmenu()
 int main()
 {
     Student testStudent;
+    testStudent.setID();//设置id为9178，方便测试
     
     int option;
     do//菜单
     {
-    cout << "\n***** Main Menu *****\n";
+    cout << "Welcome!\n";
+    cout << "\n***** VLM Main Menu *****\n";
     cout << "[1] Load Starting Data\n";
-    cout << "[2] Show Reader Accounts\n";
-    cout << "[3] Open/Close Reader Account\n";
+    cout << "[2] Show All Reader Accounts\n";
+    cout << "[3] Open or Close Reader Account\n";
     cout << "[4] Reader Account Operations\n";
     cout << "[5] Generate Statement\n";
     cout << "[6] Credits and Exit\n";
+    cout << "***********************************************************\n";
     cout << "Option (1-6): ";
     cin >> option;
 
@@ -83,7 +141,7 @@ int main()
         cin >> inputACnum;
 
         if (testStudent.checkACnum(inputACnum)){
-            R4mainmenu();//启动R4菜单
+            R4mainmenu(inputACnum);//用该id启动R4菜单
         }else{
             cout << "Invalid reader account number.\n";
             break;
