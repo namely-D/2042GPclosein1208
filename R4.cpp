@@ -38,6 +38,95 @@ private:
 };
 
 
+
+class Reader
+{
+  public :
+  string ReaderID;
+  string caedNo;
+  string name;
+  int fictionRollover;
+  int nonFictionRollover;
+  int points;
+}；
+class BorrowingRecord    //R4.3的
+{
+public:
+    string readerID;
+    string eBookID;
+    string title;
+    string genre;
+    string borrowDate;
+    string dueDate;
+    bool updated;
+};
+vector <BorrowingRecord> borrow;
+void currentborrow(string currentReaderID , string systemDate)
+{
+  BorrowingRecord newrecord;
+  newrecord.readerID = currentReaderID;
+  newrecord.borrowDate = systemDate;
+  newrecore.updated = false;
+
+  cout << "Enter eBook ID: ";
+  cin >> newRecord.eBookID;
+
+  if (newRecord.eBookID = "F01")
+  {
+    newRecord.title = "Legend";
+    newRecord.genre = "Fiction"
+  }
+  if (newRecord.eBookID = "F02")
+  {
+    newRecord.title = "The hunter game";
+    newRecord.genre = "Fiction"
+  }
+  if (newRecord.eBookID = "F03")
+  {
+    newRecord.title = "Punching the air";
+    newRecord.genre = "Fiction"
+  }
+  if (newRecord.eBookID = "F04")
+  {
+    newRecord.title = "Looking for Alasta";
+    newRecord.genre = "Fiction"
+  }
+  if (newRecord.eBookID = "F05")
+  {
+    newRecord.title = "The big sleep";
+    newRecord.genre = "Fiction"
+  }
+  if (newRecord.eBookID = "N01")
+  {
+    newRecord.title = "C++";
+    newRecord.genre = "Non-Fiction"
+  }
+  if (newRecord.eBookID = "N02")
+  {
+    newRecord.title = "Python";
+    newRecord.genre = "Non-Fiction"
+  }
+  if (newRecord.eBookID = "N03")
+  {
+    newRecord.title = "Java";
+    newRecord.genre = "Non-Fiction"
+  }
+  if (newRecord.eBookID = "N04")
+  {
+    newRecord.title = "HYML5";
+    newRecord.genre = "Non-Fiction"
+  }
+  if (newRecord.eBookID = "N05")
+  {
+    newRecord.title = "PHP";
+    newRecord.genre = "Non-Fiction"
+  }
+}
+
+
+
+
+
 //默认加载过读者资料
 void R4mainmenu(int ID)
 {
