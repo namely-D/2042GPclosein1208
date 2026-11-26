@@ -8,6 +8,7 @@
 #include <algorithm>//R2 排序
 #include <ctime>//R1 日期计算、R3 随机编号
 #include <sstream>//生成日期和读者编号字符串
+using namespace;
 class Student
 {
 public:
