@@ -1630,16 +1630,16 @@ void R4()
     cout << "Borrowing History:\n";
 
     cout << left
-         << setw(15) << "eBook ID"
-         << setw(15) << "Title"
-         << setw(15) << "Borrowing"
+         << setw(18) << "eBook ID"
+         << setw(18) << "Title"
+         << setw(18) << "Borrowing"
          << "Due"
          << endl;
 
     cout << left
-         << setw(15) << ""
-         << setw(15) << ""
-         << setw(15) << "Date"
+         << setw(18) << ""
+         << setw(18) << ""
+         << setw(18) << "Date"
          << "Date"
          << endl;
 
@@ -1660,9 +1660,9 @@ void R4()
             }
 
             cout << left
-                 << setw(15) << borrowings[i].eBookID
-                 << setw(15) << title
-                 << setw(15) << borrowings[i].BorrowingDate
+                 << setw(18) << borrowings[i].eBookID
+                 << setw(18) << title
+                 << setw(18) << borrowings[i].BorrowingDate
                  << borrowings[i].DueDate
                  << endl;
 
