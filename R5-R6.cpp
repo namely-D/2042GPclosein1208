@@ -113,4 +113,3 @@ void R6(int &option)
 
     } while (ans != "Y" || ans != "y" || ans != "N" || ans != "n");
 }
-}
