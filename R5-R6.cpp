@@ -97,6 +97,7 @@ void R6(int &option)
             cout << "FU Kei Leung   25099927A   A02B\n";
             cout << "CHOW Nok Hei   25201465A   A02A\n";
             cout << "NG Lap Yin     25204013A   A02C\n";
+            cout << "GoodBye!";
             option =6;
             break;
         }
