@@ -148,8 +148,8 @@ string calculateDueDate(string date)
     stringstream result;
 
     result << year << "-"
-           << setfill('0') << setw(2) << month << "-"
-           << setfill('0') << setw(2) << day;
+        << setfill('0') << setw(2) << month << "-"
+        << setfill('0') << setw(2) << day;
 
     return result.str();
 }
@@ -164,47 +164,47 @@ void R1()
     readers.push_back({
         "202456734", "8066778JW14",
         "WONG Claire", 0, 0, 100
-    });
+        });
 
     readers.push_back({
         "202333890", "8378678JM15",
         "MA Kathy", 0, 0, 200
-    });
+        });
 
     readers.push_back({
         "202067856", "8138876JC24",
         "CHAN Peter", 0, 0, 500
-    });
+        });
 
     readers.push_back({
         "202211843", "8689000JC11",
         "CHEUNG Alice", 0, 0, 1000
-    });
+        });
 
     // Load Borrowing Records
     borrowings.push_back({
         "202211843", "F01", "", "", false
-    });
+        });
 
     borrowings.push_back({
         "202211843", "F02", "", "", false
-    });
+        });
 
     borrowings.push_back({
         "202333890", "F01", "", "", false
-    });
+        });
 
     borrowings.push_back({
         "202067856", "N05", "", "", false
-    });
+        });
 
     borrowings.push_back({
         "202067856", "N02", "", "", false
-    });
+        });
 
     borrowings.push_back({
         "202211843", "N01", "", "", false
-    });
+        });
 
     cout << "Starting data loaded successfully!" << endl;
 
@@ -250,7 +250,7 @@ void R1()
 
     cout << "System date: " << systemDate << endl;
     cout << "Due date: "
-         << calculateDueDate(systemDate) << endl;
+        << calculateDueDate(systemDate) << endl;
 }
 //R1–R3 函数区：R2（排序和输出数据。）
 void R2()
@@ -275,24 +275,24 @@ void R2()
     cout << "\n*** Reader Account Records ***\n";
 
     cout << left
-         << setw(12) << "Reader ID"
-         << setw(16) << "Library Card"
-         << setw(32) << "Reader Name"
-         << setw(10) << "Fiction"
-         << setw(15) << "Non-Fiction"
-         << setw(10) << "Points"
-         << endl;
+        << setw(12) << "Reader ID"
+        << setw(16) << "Library Card"
+        << setw(32) << "Reader Name"
+        << setw(10) << "Fiction"
+        << setw(15) << "Non-Fiction"
+        << setw(10) << "Points"
+        << endl;
 
     for (int i = 0; i < sortedReaders.size(); i++)
     {
         cout << left
-             << setw(12) << sortedReaders[i].ID
-             << setw(16) << sortedReaders[i].CardNumber
-             << setw(32) << sortedReaders[i].Name
-             << setw(10) << sortedReaders[i].Fiction
-             << setw(15) << sortedReaders[i].NonFiction
-             << setw(10) << sortedReaders[i].Points
-             << endl;
+            << setw(12) << sortedReaders[i].ID
+            << setw(16) << sortedReaders[i].CardNumber
+            << setw(32) << sortedReaders[i].Name
+            << setw(10) << sortedReaders[i].Fiction
+            << setw(15) << sortedReaders[i].NonFiction
+            << setw(10) << sortedReaders[i].Points
+            << endl;
     }
 
     // Sort borrowing records by date (Descending)
@@ -312,24 +312,24 @@ void R2()
     cout << "\n*** Borrowing Records ***\n";
 
     cout << left
-         << setw(12) << "Reader ID"
-         << setw(10) << "eBook ID"
-         << setw(18) << "Borrowing Date"
-         << setw(18) << "Due Date"
-         << "Updated"
-         << endl;
+        << setw(12) << "Reader ID"
+        << setw(10) << "eBook ID"
+        << setw(18) << "Borrowing Date"
+        << setw(18) << "Due Date"
+        << "Updated"
+        << endl;
 
     for (int i = 0; i < sortedBorrowings.size(); i++)
     {
         if (sortedBorrowings[i].Updated == false)
         {
             cout << left
-                 << setw(12) << sortedBorrowings[i].ReaderID
-                 << setw(10) << sortedBorrowings[i].eBookID
-                 << setw(18) << sortedBorrowings[i].BorrowingDate
-                 << setw(18) << sortedBorrowings[i].DueDate
-                 << sortedBorrowings[i].Updated
-                 << endl;
+                << setw(12) << sortedBorrowings[i].ReaderID
+                << setw(10) << sortedBorrowings[i].eBookID
+                << setw(18) << sortedBorrowings[i].BorrowingDate
+                << setw(18) << sortedBorrowings[i].DueDate
+                << sortedBorrowings[i].Updated
+                << endl;
         }
     }
 }
@@ -355,16 +355,12 @@ string generateReaderID()
 
     do
     {
-        int number = rand() % 100000;
+        ID = systemDate.substr(0, 4);
 
-        stringstream result;
-
-        result << "2026"
-               << setfill('0')
-               << setw(5)
-               << number;
-
-        ID = result.str();
+        for (int i = 0; i < 5; i++)
+        {
+            ID = ID + to_string(rand() % 10);
+        }
 
     } while (findReader(ID) != -1);
 
@@ -374,7 +370,7 @@ string generateReaderID()
 //3. 计算 Check Digit
 int calculateCheckDigit(string card)
 {
-    int weights[3] = {7, 3, 1};
+    int weights[3] = { 7, 3, 1 };
 
     int sum = 0;
     int value;
@@ -400,7 +396,9 @@ bool checkCardNumber(string card)
 {
     for (int i = 0; i < readers.size(); i++)
     {
-        if (readers[i].CardNumber == card)
+        if (readers[i].CardNumber == card ||
+            readers[i].CardNumber.substr(2, 5)
+            == card.substr(2, 5))
         {
             return true;
         }
@@ -433,46 +431,141 @@ bool confirmation()
     }
 }
 //6. R3 主函数
+// Check whether a string contains digits only
+bool checkDigits(string text)
+{
+    if (text.empty())
+    {
+        return false;
+    }
+
+    for (int i = 0; i < text.length(); i++)
+    {
+        if (text[i] < '0' || text[i] > '9')
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// Check Reader ID
+bool checkReaderID(string ID)
+{
+    return ID.length() == 9 && checkDigits(ID);
+}
+
+// Check Reader Name
+bool checkReaderName(string name)
+{
+    if (name.empty() || name.length() > 30)
+    {
+        return false;
+    }
+
+    size_t space = name.find(' ');
+
+    if (space == string::npos ||
+        space == 0 || name.back() == ' ')
+    {
+        return false;
+    }
+
+    // Check uppercase surname
+    for (int i = 0; i < space; i++)
+    {
+        if (name[i] < 'A' || name[i] > 'Z')
+        {
+            return false;
+        }
+    }
+
+    // Check all characters
+    for (int i = 0; i < name.length(); i++)
+    {
+        char c = name[i];
+
+        if (!((c >= 'A' && c <= 'Z') ||
+            (c >= 'a' && c <= 'z') ||
+            c == ' ' || c == '-'))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void R3()
 {
     string ID;
 
-    cout << "Please enter Reader ID: ";
-    getline(cin, ID);
+    // Input Reader ID
+    int attempts = 0;
+
+    while (attempts < 3)
+    {
+        cout << "Please enter Reader ID: ";
+        getline(cin, ID);
+
+        if (checkReaderID(ID))
+        {
+            break;
+        }
+
+        attempts++;
+        cout << "Invalid Reader ID.\n";
+    }
+
+    if (attempts == 3)
+    {
+        cout << "Too many invalid inputs.\n";
+        return;
+    }
 
     int index = findReader(ID);
 
+    // =====================================
     // Close Reader Account
+    // =====================================
+
     if (index != -1)
     {
         cout << "\n*** Close Reader Account ***\n";
 
         cout << "Reader ID: "
-             << readers[index].ID << endl;
+            << readers[index].ID << endl;
 
         cout << "Reader Name: "
-             << readers[index].Name << endl;
+            << readers[index].Name << endl;
 
         cout << "Library Card: "
-             << readers[index].CardNumber << endl;
+            << readers[index].CardNumber << endl;
 
         cout << "Fiction Balance: "
-             << readers[index].Fiction << endl;
+            << readers[index].Fiction << endl;
 
         cout << "Non-Fiction Balance: "
-             << readers[index].NonFiction << endl;
+            << readers[index].NonFiction << endl;
 
         cout << "Reading Points: "
-             << readers[index].Points << endl;
+            << readers[index].Points << endl;
 
         if (confirmation())
         {
-            // Delete borrowing records
+            int removed = 0;
+
+            // Delete corresponding borrowing records
             for (int i = 0; i < borrowings.size(); )
             {
                 if (borrowings[i].ReaderID == ID)
                 {
-                    borrowings.erase(borrowings.begin() + i);
+                    borrowings.erase(
+                        borrowings.begin() + i
+                    );
+
+                    removed++;
                 }
                 else
                 {
@@ -484,146 +577,165 @@ void R3()
             readers.erase(readers.begin() + index);
 
             cout << "Reader account closed successfully.\n";
+
+            cout << removed
+                << " borrowing records removed.\n";
         }
         else
         {
             cout << "Operation cancelled.\n";
         }
+
+        return;
     }
 
-    // Open Reader Account
-    else
+    // =====================================
+    // Open Reader Account (Registration)
+    // =====================================
+
+    cout << "\nReader ID does not exist.\n";
+    cout << "*** Open Reader Account ***\n";
+
+    if (readers.size() >= 100)
     {
-        cout << "\n*** Open Reader Account ***\n";
-
-        if (readers.size() >= 100)
-        {
-            cout << "Maximum number of accounts reached.\n";
-            return;
-        }
-
-        int count = 0;
-
-        while (count < 3)
-        {
-            string name;
-            string institution;
-            string sequential;
-
-            cout << "Reader Name (SURNAME Givenname): ";
-            getline(cin, name);
-
-            cout << "Institutional ID (80-87): ";
-            getline(cin, institution);
-
-            cout << "Sequential Number (10000-99999): ";
-            getline(cin, sequential);
-
-            bool valid = true;
-
-            // Check reader name
-            size_t space = name.find(' ');
-
-            if (name.empty() || name.length() > 30 ||
-                space == string::npos || space == 0 ||
-                name.back() == ' ')
-            {
-                valid = false;
-            }
-
-            if (valid)
-            {
-                for (int i = 0; i < space; i++)
-                {
-                    if (name[i] < 'A' || name[i] > 'Z')
-                    {
-                        valid = false;
-                    }
-                }
-            }
-
-            // Check Institutional ID
-            if (institution.length() != 2 ||
-                institution < "80" ||
-                institution > "87")
-            {
-                valid = false;
-            }
-
-            // Check Sequential Number
-            if (sequential.length() != 5)
-            {
-                valid = false;
-            }
-
-            for (int i = 0; i < sequential.length(); i++)
-            {
-                if (sequential[i] < '0' ||
-                    sequential[i] > '9')
-                {
-                    valid = false;
-                }
-            }
-
-            if (sequential < "10000" ||
-                sequential > "99999")
-            {
-                valid = false;
-            }
-
-            if (!valid)
-            {
-                count++;
-                cout << "Invalid input. Please try again.\n";
-                continue;
-            }
-
-            // Generate Library Card Number
-            string card = institution + sequential
-                          + "J" + name[0] + "1";
-
-            card = card + to_string(calculateCheckDigit(card));
-
-            if (checkCardNumber(card))
-            {
-                count++;
-                cout << "Library Card already exists.\n";
-                continue;
-            }
-
-            // Create new reader
-            Reader newReader;
-
-            newReader.ID = generateReaderID();
-            newReader.Name = name;
-            newReader.CardNumber = card;
-            newReader.Fiction = 0;
-            newReader.NonFiction = 0;
-            newReader.Points = 0;
-
-            readers.push_back(newReader);
-
-            cout << "Reader account opened successfully!\n";
-
-            cout << "Reader ID: "
-                 << newReader.ID << endl;
-
-            cout << "Reader Name: "
-                 << newReader.Name << endl;
-
-            cout << "Library Card: "
-                 << newReader.CardNumber << endl;
-
-            cout << "Fiction Balance: 0\n";
-            cout << "Non-Fiction Balance: 0\n";
-            cout << "Reading Points: 0\n";
-
-            return;
-        }
-
-        cout << "Account creation failed after 3 attempts.\n";
+        cout << "Maximum number of accounts reached.\n";
+        return;
     }
+
+    string name;
+    string institution;
+    string sequential;
+
+    bool valid = false;
+
+    // Input Reader Name
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Reader Name (SURNAME Givenname): ";
+        getline(cin, name);
+
+        if (checkReaderName(name))
+        {
+            valid = true;
+            break;
+        }
+
+        cout << "Invalid reader name.\n";
+    }
+
+    if (!valid)
+    {
+        cout << "Registration failed.\n";
+        return;
+    }
+
+    // Input Institutional ID
+    valid = false;
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Institutional ID (80-87): ";
+        getline(cin, institution);
+
+        if (institution.length() == 2 &&
+            checkDigits(institution) &&
+            institution >= "80" &&
+            institution <= "87")
+        {
+            valid = true;
+            break;
+        }
+
+        cout << "Invalid Institutional ID.\n";
+    }
+
+    if (!valid)
+    {
+        cout << "Registration failed.\n";
+        return;
+    }
+
+    // Input Sequential Number
+    valid = false;
+    string card;
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Sequential Number (10000-99999): ";
+        getline(cin, sequential);
+
+        if (sequential.length() != 5 ||
+            !checkDigits(sequential) ||
+            sequential < "10000" ||
+            sequential > "99999")
+        {
+            cout << "Invalid Sequential Number.\n";
+            continue;
+        }
+
+        // Generate Library Card Number
+        card = institution + sequential
+            + "J" + name[0] + "1";
+
+        card = card +
+            to_string(calculateCheckDigit(card));
+
+        // Check duplicate number
+        if (checkCardNumber(card))
+        {
+            cout << "Sequential Number already exists.\n";
+            continue;
+        }
+
+        valid = true;
+        break;
+    }
+
+    if (!valid)
+    {
+        cout << "Registration failed.\n";
+        return;
+    }
+
+    // Create new reader account
+    Reader newReader;
+
+    newReader.ID = generateReaderID();
+    newReader.Name = name;
+    newReader.CardNumber = card;
+
+    newReader.Fiction = 0;
+    newReader.NonFiction = 0;
+    newReader.Points = 0;
+
+    // Save new account into the shared vector
+    readers.push_back(newReader);
+
+    // Display registration result
+    cout << "\nRegistration successful!\n";
+
+    cout << "Reader ID: "
+        << newReader.ID << endl;
+
+    cout << "Reader Name: "
+        << newReader.Name << endl;
+
+    cout << "Library Card Number: "
+        << newReader.CardNumber << endl;
+
+    cout << "Fiction Balance: "
+        << newReader.Fiction << endl;
+
+    cout << "Non-Fiction Balance: "
+        << newReader.NonFiction << endl;
+
+    cout << "Reading Points: "
+        << newReader.Points << endl;
+
+    cout << "Total Reader Accounts: "
+        << readers.size() << endl;
 }
+
 //这个部分最重要的是把 R1、R2、R3 连接到组员已经写好的 Main Menu。
 int main()
 {
@@ -668,35 +780,60 @@ int main()
 
         switch (option)
         {
-            case 1:
-                R1();
-                break;
+        case 1:
+            R1();
+            break;
 
-            case 2:
-                R2();
-                break;
+        case 2:
+            R2();
+            break;
 
-            case 3:
-                R3();
-                break;
+        case 3:
+            R3();
+            break;
+            // R4 - Other group member
+        case 4:
+        {
+            string inputACnum;
 
-            case 4:
-                // R4 - Other group member
-                cout << "R4 is not implemented yet.\n";
-                break;
+            cout << "Please enter Reader ID: ";
+            getline(cin, inputACnum);
 
-            case 5:
-                // R5 - Other group member
-                cout << "R5 is not implemented yet.\n";
-                break;
+            int index = findReader(inputACnum);
 
-            case 6:
-                // Temporary exit for testing
-                cout << "Goodbye!\n";
-                break;
+            if (index != -1)
+            {
+                cout << "Reader account found!\n";
 
-            default:
-                cout << "Invalid option.\n";
+                cout << "Reader ID: "
+                    << readers[index].ID << endl;
+
+                cout << "Reader Name: "
+                    << readers[index].Name << endl;
+
+                // R4mainmenu(inputACnum);
+            }
+            else
+            {
+                cout << "Invalid reader account number.\n";
+            }
+
+            break;
+        }
+            break;
+
+        case 5:
+            // R5 - Other group member
+            cout << "R5 is not implemented yet.\n";
+            break;
+
+        case 6:
+            // Temporary exit for testing
+            cout << "Goodbye!\n";
+            break;
+
+        default:
+            cout << "Invalid option.\n";
         }
 
     } while (option != 6);
