@@ -86,7 +86,7 @@ void R6(int &option)
     do
     {
         cout << "Would you like to exit now? (Y/N): ";
-        cin >> ans;
+        cin >> ans; //user input
 
         if (ans == "Y" || ans == "y")
         {
@@ -103,7 +103,7 @@ void R6(int &option)
         }
         else if (ans == "N" || ans == "n")
         {
-            option = 1;
+            option = 1; //option != 6, back to main menu
             break;
         }
         else
