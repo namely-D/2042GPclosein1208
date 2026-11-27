@@ -1773,9 +1773,7 @@ int main()
                 R5();
                 break;
 
-            case 6:
-			R6();
-                cout << "Goodbye!\n";
+            case 6:R6(option);
                 break;
 
             default:
