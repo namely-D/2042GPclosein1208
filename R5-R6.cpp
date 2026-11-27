@@ -82,10 +82,8 @@ void R5()
 
 void R6(int &option)
 {
-    string ans; //response from user
-    do
-    {
-        cout << "Would you like to exit now? (Y/N): ";
+    string ans;
+        cout << "Would you like to exit now? (Yes/No): ";
         cin >> ans;
 
         if (ans == "Y" || ans == "y")
@@ -97,19 +95,5 @@ void R6(int &option)
             cout << "FU Kei Leung   25099927A   A02B\n";
             cout << "CHOW Nok Hei   25201465A   A02A\n";
             cout << "NG Lap Yin     25204013A   A02C\n";
-            cout << "GoodBye!";
-            option =6;
-            break;
         }
-        else if (ans == "N" || ans == "n")
-        {
-            option = 1; // option not equal to 6, back to main menu
-            break;
-        }
-        else
-        {
-            cout << "Please type your option again!" << endl;
-        }
-
-    } while (ans != "Y" || ans != "y" || ans != "N" || ans != "n");
 }
