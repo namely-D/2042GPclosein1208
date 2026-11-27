@@ -82,10 +82,10 @@ void R5()
 
 void R6(int &option)
 {
-    string ans;
+    string ans; //response from user
     do
     {
-        cout << "Would you like to exit now? (Yes/No): ";
+        cout << "Would you like to exit now? (Y/N): ";
         cin >> ans;
 
         if (ans == "Y" || ans == "y")
@@ -102,7 +102,7 @@ void R6(int &option)
         }
         else if (ans == "N" || ans == "n")
         {
-            option = 1;
+            option = 1; // option not equal to 6, back to main menu
             break;
         }
         else
